@@ -1,0 +1,69 @@
+﻿ Login module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,Successful Login Verification,User is registered and has a valid username and password,"Username: testuser
+
+Password: Test@123",User successfully logs into the system,User successfully logs into the system,Pass,None,,
+,Verification of invalid username,User is not logged in,"Username: invalidUser
+
+Password: invalidPass123","The error message ""The username is invalid"" is displayed",,,None,,
+,Verification of invalid password,,"Username: testuser
+
+Password: invalidPass123","The error message ""The password is incorrect"" is displayed",,,None,,
+,Verify password strength,The user is registering or changing password,Password: weak,"The error message ""Password is not strong enough"" is displayed",,,Test for weak passwords and passwords that do not comply with policy,,
+,Verify account locking mechanism,User is not logged in,Multiple incorrect usernames and passwords,Account temporarily locked,,,Number of verification attempts and lock time,,
+,Verify verification code function,User failed to log in multiple times,"Username: testuser
+
+Password: Test@123","The error message ""Verification code error"" is displayed",,,Verify the necessity and correctness of the verification code,,
+,Authentication session management,User successfully logs in,"Username: testuser
+
+Password: Test@123","Create a new session after logging in, end the session after logging out or timeout",,,Includes testing of session timeouts,,
+,Verify multi-factor authentication,The user has enabled MFA,"Correct username and password, incorrect MFA code",Login fails with MFA error message,,,Includes different types of MFA verification,,
+,Verify forgotten password function,User has registered,Registered email or username,Password reset link or code sent successfully,,,Verify security and email delivery,,
+,Response time and performance,User attempts to log in,"Username: testuser
+
+Password: Test@123",Fast response and no lag login,,, Tested under different network and load conditions,,
+,Security Protocols and Encryption,User login,"Username: testuser
+
+Password: Test@123",Encrypted data transfer and standards-compliant security protocols,,, Including testing of security protocols such as SSL/TLS,,
+,Defense against cross-site scripting and injection attacks,Validation to defend against XSS and SQL injection,Username and password containing malicious code,"Prevent malicious code execution, securely handle input",,,Sanitization and processing of validation input,,
+,,,,,,,,,
+,,,,,,,,,
+Accounting module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,Create new accounting record,The user has logged in and is on the accounting module page,"Name: Lunch, Category: Food, Amount: 50, Date: 2023-11-16","The application displays the new accounting record, including name, amount, and date",,,Make sure records are saved and displayed in the list as expected,,
+,Edit existing accounting records,The user has logged in and has at least one accounting record,"Dinner, Category: Food, Amount: 80, Date: 2023-11-16, Select an existing record to edit",Selected records updated with new information,,,Verify whether the record is updated correctly and whether the old information is replaced by the new information,,
+,Delete existing accounting records,The user has logged in and has at least one accounting record,Select an existing accounting record to delete,The selected records are removed from the list and database,,,Verify that the record has been permanently deleted and should no longer appear in any lists,,
+,Add new accounting category,The user has logged in and is on the category management page,Category name: Entertainment,The new category appears in the category list,,,Make sure the new category is available for creating and editing records,,
+,Change the date of accounting records,The user has logged in and has at least one accounting record,Select an existing accounting record with a change date of 2023-11-17,The recorded date is updated to the new date,,,Verify that the date of the record is updated correctly,,
+,,,,,,,,,
+Statistics module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,Display current budget status,"The user has logged in, has set a budget, and has some accounting records","No input required, view budget status page",Correct display of total budget and percentage of amount used,,,Verify that the percentage shown matches the actual record,,
+,Set and modify budget,The user has logged in and is on the budget setting page,"Set the budget amount to 10,000",Budget amount updated to 10000,,,Make sure the newly set budget is reflected in the budget status display,,
+,View spend distribution chart,The user has logged in and there are enough accounting records to generate statistical data,Navigate to the statistical chart page,Display a graph of expenditure distribution based on records,,,The chart should correctly reflect the proportion of expenditures in different categories,,
+,Query historical accounting records,The user has logged in and has historical accounting records,Select to view records for a specific month,Display all accounting records for the selected month,,,Verify that you can filter by month and view history,,
+,Generate monthly and annual financial reports,The user is logged in and there are enough accounting records to generate reports,Navigate to the report generation page and choose to generate a monthly or annual report,Application generates and displays financial reports,,,"Report should detail income, expenses and summary",,
+,,,,,,,,,
+User information module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,View profile information,The user has logged in and is on the main page,Navigate to profile page,"Display the user's profile information, including username and email address",,,Make sure personal information is displayed correctly,,
+,Edit profile information,The user has logged in and is on the profile page,Change username to Jane Smith and email address to jane.smith@example.com,Profile updated with new username and email address,,,Verify whether the data can be displayed correctly on the page and database after saving.,,
+,View and set personal budget,The user has logged in and is on the profile page,Set new budget amount to 15000,The budget amount is updated to 15000 and reflected in the budget status display,,,Make sure the budget setting function is correct and the new budget amount can be displayed correctly after updating,,
+,,,,,,,,,
+Settings module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,Change common settings,The user has logged in and is on the settings page,"Change language settings, select ""English""",The application's language changes to English,,,"Make sure that when the language is changed, the language of all pages is also changed.",,
+,Change notification settings,The user has logged in and is on the settings page,Enable accounting reminder notifications,The application starts sending reminder notifications based on the time set by the user,,,Verify whether notifications can be sent on time according to the time and frequency set by the user,,
+,Change security settings,The user has logged in and is on the settings page,"Set the application lock mode to ""Fingerprint Verification""",The application asks the user for fingerprint verification on next launch,,,Verify that the application responds correctly to changes to security settings and implements new security measures at launch,,
+,,,,,,,,,
+,,,,,,,,,
+Data synchronization and backup module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,Data synchronization to the cloud,The user has logged in and has local accounting data,Select for data synchronization,The application shows successful synchronization and the latest data backup is available in the cloud storage,,,"After verifying data synchronization, the cloud data is consistent with the local data",,
+,Perform data backup,The user has logged in and has local accounting data,Select for data backup,The application creates a backup of the data and provides backup files for download or storage to the cloud,,,Make sure the backup contains all necessary data and can be exported or saved,,
+,Restore data from backup,The user is logged in and has available data backup,Select a backup file to restore,The application restores data from the backup and the restored data is consistent with the backup,,,Verify that all records and settings have not changed after data recovery,,
+,,,,,,,,,
+Help and support module test,,,,,,,,,
+Test Case ID,Test Case Name, Precondition,Input Data,Expected Result,Actual Result,Test Result,Remarks,,
+,Access application usage guide,The user is logged in and is on the settings or help page,Select View User Guide,Application displays usage guide content,,,Make sure the user guide content is up to date and easy to understand,,
+,User submits feedback,The user is logged in and is on the help page,Enter feedback content in the feedback form and submit,Feedback successfully submitted to the development team,,,Verify that post-submission feedback is correctly recorded and notify the development team,,
