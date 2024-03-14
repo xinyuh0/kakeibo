@@ -1,7 +1,6 @@
 <!-- Title -->
 <div align="center">
-   <img src="./screenshots/logo.svg"/>
-   <h2 align="center">Kakeibo</h2>
+   <h1 align="center">Kakeibo</h2>
    <p align="center">A personal financing app that helps to keep records of daily expenses and manage budgets</p>
 </div>
 
